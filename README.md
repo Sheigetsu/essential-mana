@@ -1,2 +1,2 @@
 # essential-mana
-Essential Mana homepage
+soon :)

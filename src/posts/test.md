@@ -1,0 +1,6 @@
+---
+title: "My first blog post"
+tags: ["Gear"]
+---
+
+Has anyone heard about GatsbyJS yet?

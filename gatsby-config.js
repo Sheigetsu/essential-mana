@@ -9,8 +9,8 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `posts`,
+        path: `${__dirname}/src/posts`,
       },
     },
     // `gatsby-transformer-sharp`,
@@ -42,9 +42,27 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          posts: require.resolve("./src/components/layout.tsx"),
-          default: require.resolve("./src/components/layout.tsx"),
+          posts: require.resolve("./src/components/layouts/postsLayout.tsx"),
+          default: require.resolve("./src/components/layouts/defaultLayout.tsx"),
         }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Roboto Mono`,
+            variants: [
+                `400`,
+                `700`
+            ]
+          },
+          {
+            family: `Roboto`,
+            subsets: [`latin`]
+          }
+        ]
       }
     }
   ],

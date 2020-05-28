@@ -3,9 +3,18 @@ import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 
 const Header = () => {
-  // add categories / tags query
   const data = useStaticQuery(graphql`
     query {
+      allMdx {
+        edges {
+          node {
+            frontmatter {
+              tags
+              title
+            }
+          }
+        }
+      }
       site {
         siteMetadata {
           title
@@ -14,18 +23,38 @@ const Header = () => {
     }
   `);
 
+  const removeDupes = (data: string[]): string[] => {
+    let result = [];
+
+    for (let tag of data) {
+      if (!result.includes(tag)) result.push(tag);
+    }
+
+    return result;
+  };
+
+  const title = data.site.siteMetadata.title;
+  const tags = removeDupes(
+    [].concat.apply(
+      [],
+      data.allMdx.edges.map(edge => edge.node.frontmatter.tags)
+    )
+  );
+
   return (
     <header>
       <div>
         <ul>
           <li>
-            <a href="/">{data.site.siteMetadata.title}</a>
+            <a href="/">{title}</a>
           </li>
-          {/* {categories.map(link => {
-            <li>
-              <a href={link.url}>{link.text}</a>
-            </li>;
-          })} */}
+          {tags.map(tag => {
+            return (
+              <li>
+                <a href="#">{tag}</a>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </header>

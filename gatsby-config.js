@@ -3,6 +3,7 @@ module.exports = {
     title: `Essential Mana`,
     description: `TERA (Non-official) Fansite`,
     author: `Bobbuz`,
+    version: '0.1.0'
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Essentialmana`,
-    description: `A TERA Online guide site`,
-    author: `bobbuzuwu`,
+    title: `Essential Mana`,
+    description: `TERA (Non-official) Fansite`,
+    author: `Bobbuz`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -18,14 +18,6 @@ module.exports = {
       options: {
         name: `pages`,
         path: `${__dirname}/src/pages`,
-      },
-    },
-    // `gatsby-plugin-offline`,
-    {
-      resolve: "gatsby-plugin-page-creator",
-      options: {
-        name: `posts`,
-        path: `${__dirname}/src/posts`,
       },
     },
     {

@@ -5,7 +5,6 @@ import Header from "../header";
 import Footer from "../footer";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
-import Badge from "react-bootstrap/Badge";
 
 const shortcodes = {
     ItemTooltip

@@ -1,14 +1,42 @@
 // @ts-ignore
 import React from "react";
-import { Link } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 
 import DefaultLayout from "../components/layouts/defaultLayout";
+import PostCard from "../components/postCard";
 
-const IndexPage = () => (
-  <DefaultLayout>
-    <h1>Hello World</h1>
-    Have a link to a <Link to="/owo">broken page</Link>
-  </DefaultLayout>
-);
+const IndexPage = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allMdx {
+        edges {
+          node {
+            frontmatter {
+              tags
+              title
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  const postCardInfo = data.allMdx.edges.map(edge => edge.node.frontmatter);
+
+  return (
+    <DefaultLayout>
+      <h1>Post List</h1>
+      {postCardInfo.map(data => {
+        return (
+          <PostCard
+            key={data.title}
+            title={data.title}
+            tags={data.tags || []}
+          />
+        );
+      })}
+    </DefaultLayout>
+  );
+};
 
 export default IndexPage;

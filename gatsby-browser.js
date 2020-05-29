@@ -5,3 +5,5 @@
  */
 
 // You can delete this file if you're not using it
+require("bootstrap/dist/css/bootstrap.min.css");
+require("./src/styles/global.css");

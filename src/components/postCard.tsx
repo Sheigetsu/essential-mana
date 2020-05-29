@@ -6,7 +6,7 @@ const PostCard = ({ title, tags }) => (
     {title}
     {tags.map(tag => {
       return (
-        <Link to="#" activeStyle={{ paddingLeft: "10px" }}>
+        <Link key={tag} to="/" activeStyle={{ paddingLeft: "10px" }}>
           #{tag}
         </Link>
       );

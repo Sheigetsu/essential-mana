@@ -1,6 +1,6 @@
 // @ts-ignore
 import React from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 
 import DefaultLayout from "../components/layouts/defaultLayout";
 import PostCard from "../components/postCard";
@@ -15,13 +15,14 @@ const IndexPage = () => {
               tags
               title
             }
+            id
           }
         }
       }
     }
   `);
 
-  const postCardInfo = data.allMdx.edges.map(edge => edge.node.frontmatter);
+  const postCardInfo = data.allMdx.edges.map(edge => edge.node);
 
   return (
     <DefaultLayout>
@@ -29,9 +30,9 @@ const IndexPage = () => {
       {postCardInfo.map(data => {
         return (
           <PostCard
-            key={data.title}
-            title={data.title}
-            tags={data.tags || []}
+            key={data.id}
+            title={data.frontmatter.title}
+            tags={data.frontmatter.tags || []}
           />
         );
       })}

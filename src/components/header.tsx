@@ -2,6 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
 
+const HeaderLink = ({ title, path }) => (
+  <div>
+    <a href={path}>{title}</a>
+  </div>
+);
+
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
@@ -33,7 +39,7 @@ const Header = () => {
     return result;
   };
 
-  const title = data.site.siteMetadata.title;
+  const siteTitle = data.site.siteMetadata.title;
   const tags = removeDupes(
     [].concat.apply(
       [],
@@ -43,20 +49,7 @@ const Header = () => {
 
   return (
     <header>
-      <div>
-        <ul>
-          <li>
-            <a href="/">{title}</a>
-          </li>
-          {tags.map(tag => {
-            return (
-              <li>
-                <a href="#">{tag}</a>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+      <HeaderLink title={siteTitle} path="#" />
     </header>
   );
 };

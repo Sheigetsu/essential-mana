@@ -29,7 +29,7 @@ const Footer = () => {
 };
 
 Footer.propTypes = {
-    source: PropTypes.url,
+    source: PropTypes.string,
     title: PropTypes.string,
     author: PropTypes.string,
     devs: PropTypes.string

@@ -8,11 +8,11 @@ import Footer from "../footer";
 
 const DefaultLayout = ({ children: content }) => {
   return (
-    <>
+    <div className="page-wrap">
       <Header />
-      <main>{content}</main>
+      <main className="site-main">{content}</main>
       <Footer />
-    </>
+    </div>
   );
 };
 

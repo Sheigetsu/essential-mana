@@ -2,6 +2,15 @@
   font-family: Roboto, serif;
 }
 
-body {
-  background-color: grey;
+.page-wrap {
+  background-color: #333;
+}
+
+.site-main {
+  min-height: calc(100vh - 70px - 50px);
+  background-color: #555;
+  color: white;
+  margin-left: 10vw;
+  margin-right: 10vw;
+  padding: 30px;
 }

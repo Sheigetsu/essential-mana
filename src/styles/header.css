@@ -1,6 +1,6 @@
 .site-header {
   height: 70px;
-  background-color: black;
+  background-color: #111;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -9,15 +9,18 @@ body {
   width: 100%;
   display: inline-flex;
   margin: 25px 15px;
+  justify-content: center;
 
   .card-list {
     display: flex;
-    width: 100%;
+    max-width: 1300px;
     flex-wrap: wrap;
+    justify-content: center;
 
     //https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg
 
     .card {
+      min-width: 320px;
       width: 25%;
       margin: 0 15px 15px 0;
       background-color: $background;
@@ -30,5 +33,3 @@ body {
     }
   }
 }
-
-

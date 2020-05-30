@@ -1,12 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useStaticQuery, graphql } from "gatsby";
-
-const HeaderLink = ({ title, path }) => (
-  <div>
-    <a href={path}>{title}</a>
-  </div>
-);
+import { Link, useStaticQuery, graphql } from "gatsby";
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -48,8 +42,18 @@ const Header = () => {
   );
 
   return (
-    <header>
-      <HeaderLink title={siteTitle} path="#" />
+    <header className="site-header">
+      <div className="header-logo">
+        <Link to="/">{siteTitle.toUpperCase()}</Link>
+      </div>
+      <div className="header-links">
+        <Link to="/">Gear</Link>
+        <Link to="/">Dungeons</Link>
+        <Link to="/">Patch Notes</Link>
+      </div>
+      <div className="header-search">
+        <Link to="/">SEARCH</Link>
+      </div>
     </header>
   );
 };

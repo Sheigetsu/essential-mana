@@ -1,9 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import {Link, useStaticQuery, graphql} from "gatsby";
+import Container from "react-bootstrap/Container";
 
 const Header = () => {
-  const data = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql`
     query {
       allMdx {
         edges {
@@ -23,49 +24,59 @@ const Header = () => {
     }
   `);
 
-  const removeDupes = (data: string[]): string[] => {
-    let result = [];
+    const removeDupes = (data: string[]): string[] => {
+        let result = [];
 
-    for (let tag of data) {
-      if (!result.includes(tag)) result.push(tag);
-    }
+        for (let tag of data) {
+            if (!result.includes(tag)) result.push(tag);
+        }
 
-    return result;
-  };
+        return result;
+    };
 
-  const siteTitle = data.site.siteMetadata.title;
-  const tags = removeDupes(
-    [].concat.apply(
-      [],
-      data.allMdx.edges.map(edge => edge.node.frontmatter.tags)
-    )
-  );
+    const siteTitle = data.site.siteMetadata.title;
+    const tags = removeDupes(
+        [].concat.apply(
+            [],
+            data.allMdx.edges.map(edge => edge.node.frontmatter.tags)
+        )
+    );
 
-  return (
-    <header className="site-header">
-      <div className="header-logo">
-        <Link to="/">{siteTitle.toUpperCase()}</Link>
-      </div>
-      <div className="header-links">
-        <Link to="/">Gear</Link>
-        <Link to="/">Dungeons</Link>
-        <Link to="/">Patch Notes</Link>
-      </div>
-      <div className="header-search">
-        <Link to="/">SEARCH</Link>
-      </div>
-    </header>
-  );
+    return (
+        <header className="main-header">
+            <Container>
+                <h1 className={"em-logo"}>
+                    <Link to={"/"}>{siteTitle.toUpperCase()}</Link>
+                </h1>
+                <nav className={"main-nav"}>
+                    <ul className={"nav-list"}>
+                        <li>
+                            <Link to={"/"}>Home</Link>
+                        </li>
+                        <li>
+                            <Link to={"/test"}>Gear</Link>
+                        </li>
+                        <li>
+                            <Link to={"/"}>Dungeons</Link>
+                        </li>
+                        <li>
+                            <Link to={"/"}>Patch Notes</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </Container>
+        </header>
+    );
 };
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
-  categories: PropTypes.array,
+    siteTitle: PropTypes.string,
+    categories: PropTypes.array,
 };
 
 Header.defaultProps = {
-  siteTitle: ``,
-  categories: [],
+    siteTitle: ``,
+    categories: [],
 };
 
 export default Header;

@@ -6,7 +6,7 @@ import DefaultLayout from "../components/layouts/defaultLayout";
 import PostCard from "../components/postCard";
 
 const IndexPage = () => {
-  const data = useStaticQuery(graphql`
+    const data = useStaticQuery(graphql`
     query {
       allMdx {
         edges {
@@ -22,22 +22,25 @@ const IndexPage = () => {
     }
   `);
 
-  const postCardInfo = data.allMdx.edges.map(edge => edge.node);
+    const postCardInfo = data.allMdx.edges.map(edge => edge.node);
 
-  return (
-    <DefaultLayout>
-      <h1>Post List</h1>
-      {postCardInfo.map(data => {
-        return (
-          <PostCard
-            key={data.id}
-            title={data.frontmatter.title}
-            tags={data.frontmatter.tags || []}
-          />
-        );
-      })}
-    </DefaultLayout>
-  );
+    return (
+        <DefaultLayout>
+            <div className={"main-page"}>
+                <div className={"card-list"}>
+                    {postCardInfo.map(data => {
+                        return (
+                            <PostCard
+                                key={data.id}
+                                title={data.frontmatter.title}
+                                tags={data.frontmatter.tags || []}
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+        </DefaultLayout>
+    );
 };
 
 export default IndexPage;

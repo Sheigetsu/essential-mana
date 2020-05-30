@@ -1,25 +1,28 @@
 import React from "react";
-import { MDXProvider } from "@mdx-js/react";
+import {MDXProvider} from "@mdx-js/react";
 import ItemTooltip from "../itemTooltip";
 import Header from "../header";
 import Footer from "../footer";
-import { graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
+import {graphql} from "gatsby";
+import {MDXRenderer} from "gatsby-plugin-mdx";
+import Container from "react-bootstrap/Container";
 
 const shortcodes = {
     ItemTooltip
 };
 
-const PostsLayout = ({ data: { mdx } }) => {
+const PostsLayout = ({data: {mdx}}) => {
     return (
         <MDXProvider components={shortcodes}>
             <Header/>
-            <main>
-                <h2>{mdx.frontmatter.title}</h2>
-                <MDXRenderer>
-                    {mdx.body}
-                </MDXRenderer>
-            </main>
+            <Container>
+                <main>
+                    <h2>{mdx.frontmatter.title}</h2>
+                    <MDXRenderer>
+                        {mdx.body}
+                    </MDXRenderer>
+                </main>
+            </Container>
             <Footer/>
         </MDXProvider>
     );

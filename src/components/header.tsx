@@ -52,7 +52,7 @@ const Header = () => {
         <Link to="/">Patch Notes</Link>
       </div>
       <div className="header-search">
-        <Link to="/">SEARCH</Link>
+        <Link to="/searchTesting">SEARCH</Link>
       </div>
     </header>
   );

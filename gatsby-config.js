@@ -2,7 +2,9 @@ module.exports = {
   siteMetadata: {
     title: `Essential Mana`,
     description: `TERA (Non-official) Fansite`,
+    source: `https://github.com/Sheigetsu/essential-mana`,
     author: `Bobbuz`,
+    devs: `Sheigetsu & Lloyderino`,
     version: '0.1.0'
   },
   plugins: [
@@ -48,6 +50,7 @@ module.exports = {
           }
         ]
       }
-    }
+    },
+    `gatsby-plugin-sass`
   ],
 }

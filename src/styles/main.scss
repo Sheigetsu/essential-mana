@@ -1,40 +1,13 @@
 @import "palette";
 
-body {
-  background-color: $light-grey;
-  color: $secondary;
-}
-
-main {
-  display: flex;
-  justify-content: center;
-}
-
 .main-page {
-  // width: 100%;
-  display: inline-flex;
-  margin: 25px 15px;
-  justify-content: center;
+  padding: 15px 0;
 
-  .card-list {
-    display: flex;
-    max-width: 1300px;
-    flex-wrap: wrap;
-    justify-content: center;
+  .row {
+    margin: 0 0 15px 0;
 
-    //https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg
-
-    .card {
-      min-width: 320px;
-      width: 25%;
-      margin: 0 15px 15px 0;
-      background-color: $background;
-      border-color: $background-secondary;
-
-      .card-img-top {
-        height: 250px;
-        object-fit: cover;
-      }
+    &:last-of-type {
+      margin: 0;
     }
   }
 }

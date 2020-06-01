@@ -6,14 +6,17 @@ import PropTypes from "prop-types";
 import Header from "../header";
 import Footer from "../footer";
 import Container from "react-bootstrap/Container";
+import Carousel from "react-bootstrap/Carousel";
 
 const DefaultLayout = ({ children: content }) => {
     return (
         <>
             <Header/>
-            <Container>
-                <main>{content}</main>
-            </Container>
+            <main>
+                <Container>
+                    {content}
+                </Container>
+            </main>
             <Footer/>
         </>
     );

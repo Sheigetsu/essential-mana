@@ -66,7 +66,7 @@ const IndexPage = () => {
           return (
             // using index as key isn't really recommended but might be fine
             <Row key={index}>
-              {card.map(postCard => {
+              {card.map((postCard: any) => {
                 return (
                   <Col key={postCard.id} md={6} xs={12}>
                     <PostCard

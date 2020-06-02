@@ -21,7 +21,10 @@ const PostsLayout = ({ data: { mdx } }) => {
                         <div className={"post-page"}>
                             {/*<img className={"post-header"} src={mdx.frontmatter.thumbnail} alt={mdx.frontmatter.title}/>*/}
                             <div className={"parallax"} style={{backgroundImage: `url(${mdx.frontmatter.thumbnail})`}}/>
-                            <h2>{mdx.frontmatter.title}</h2>
+                            <div class={"post-header"}>
+                                <h2>{mdx.frontmatter.title}</h2>
+                                <sub>by {mdx.frontmatter.author}</sub>
+                            </div>
                             <MDXRenderer>
                                 {mdx.body}
                             </MDXRenderer>
@@ -44,6 +47,7 @@ export const pageQuery = graphql`
             frontmatter {
                 title
                 thumbnail
+                author
             }
         }
     }

@@ -1,18 +1,17 @@
 @import "palette";
+@import '~bootstrap/scss/functions', '~bootstrap/scss/variables';
 
 main {
   background-color: grey;
 
   .container {
+    min-height: calc(100vh - 56px * 2);
     background-color: lightgrey;
+    padding: 15px;
   }
 }
 
 .main-page {
-  padding: 15px 0;
-  // large screens support
-  min-height: calc(100vh - 56px * 2);
-
   .row {
     margin: 0 0 15px 0;
 
@@ -23,8 +22,6 @@ main {
 }
 
 .post-page {
-  padding: 15px 0;
-
   .parallax {
     height: 400px;
 
@@ -32,5 +29,14 @@ main {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+  }
+
+  .post-header {
+    h2 {
+      margin: 0;
+    }
+    sub {
+      bottom: 0;
+    }
   }
 }

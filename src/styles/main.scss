@@ -1,5 +1,13 @@
 @import "palette";
 
+main {
+  background-color: grey;
+
+  .container {
+    background-color: lightgrey;
+  }
+}
+
 .main-page {
   padding: 15px 0;
 
@@ -9,5 +17,18 @@
     &:last-of-type {
       margin: 0;
     }
+  }
+}
+
+.post-page {
+  padding: 15px 0;
+
+  .parallax {
+    height: 400px;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }

@@ -11,7 +11,7 @@ import Col from "react-bootstrap/Col";
 const IndexPage = () => {
     const data = useStaticQuery(graphql`
         query {
-          allMdx {
+          allMdx(sort: {fields: frontmatter___date, order: ASC}) {
             edges {
               node {
                 frontmatter {
@@ -31,11 +31,12 @@ const IndexPage = () => {
     `);
     const postCardInfo = data.allMdx.edges.map(edge => edge.node);
     const chunkedPostCards = _.chunk(postCardInfo, 2);
+    const sortedPostCards = chunkedPostCards.reverse();
 
     return (
         <DefaultLayout>
             <div className={"main-page"}>
-                {chunkedPostCards.map(index => {
+                {sortedPostCards.map(index => {
                     return (
                         <Row key={index}>
                             {index.map(postCard => {

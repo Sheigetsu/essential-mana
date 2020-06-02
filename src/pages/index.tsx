@@ -31,15 +31,15 @@ const IndexPage = () => {
     `);
     const postCardInfo = data.allMdx.edges.map(edge => edge.node);
     const chunkedPostCards = _.chunk(postCardInfo, 2);
-    const sortedPostCards = chunkedPostCards.reverse();
 
     return (
         <DefaultLayout>
             <div className={"main-page"}>
-                {sortedPostCards.map(index => {
+                {chunkedPostCards.map((card, index) => {
                     return (
+                        // using index as key isn't really recommended but might be fine
                         <Row key={index}>
-                            {index.map(postCard => {
+                            {card.map(postCard => {
                                 return (
                                     <Col key={postCard.id}>
                                         <PostCard key={postCard.id}

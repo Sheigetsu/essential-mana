@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Link, useStaticQuery, graphql } from "gatsby";
+import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 const Header = () => {
   const data = useStaticQuery(graphql`
@@ -42,18 +45,27 @@ const Header = () => {
   );
 
   return (
-    <header className="site-header">
-      <div className="header-logo">
-        <Link to="/">{siteTitle.toUpperCase()}</Link>
-      </div>
-      <div className="header-links">
-        <Link to="/">Gear</Link>
-        <Link to="/">Dungeons</Link>
-        <Link to="/">Patch Notes</Link>
-      </div>
-      <div className="header-search">
-        <Link to="/searchTesting">SEARCH</Link>
-      </div>
+    <header>
+      <Navbar bg={"dark"} variant={"dark"} expand={"lg"}>
+        <Container>
+          <Navbar.Brand href={"/"}>
+            <img
+              alt={""}
+              src={
+                "https://cdn.discordapp.com/attachments/346495559214956546/717068165858983946/d38ea5afc43027bc7cc46436fcab77e4_1.png"
+              }
+              width={"30"}
+              height={"30"}
+              className={"d-inline-block align-top"}
+            />{" "}
+            {siteTitle}
+          </Navbar.Brand>
+          <Nav className={"em-nav"}>
+            <Nav.Link href={"/"}>Home</Nav.Link>
+            <Nav.Link href={"/searchTesting"}>Search</Nav.Link>
+          </Nav>
+        </Container>
+      </Navbar>
     </header>
   );
 };

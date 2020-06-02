@@ -1,0 +1,17 @@
+@import "palette";
+
+header {
+  .navbar-brand {
+    font-weight: bold;
+  }
+
+  .nav-link {
+    text-align: center;
+    min-width: 90px;
+    margin: 0 5px;
+
+    &:hover {
+      background: $background-secondary;
+    }
+  }
+}

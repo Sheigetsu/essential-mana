@@ -5,6 +5,7 @@ import Header from "../header";
 import Footer from "../footer";
 import { graphql } from "gatsby";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import Container from "react-bootstrap/Container";
 
 const shortcodes = {
     ItemTooltip
@@ -12,16 +13,27 @@ const shortcodes = {
 
 const PostsLayout = ({ data: { mdx } }) => {
     return (
-        <MDXProvider components={shortcodes}>
-            <Header/>
-            <main>
-                <h2>{mdx.frontmatter.title}</h2>
-                <MDXRenderer>
-                    {mdx.body}
-                </MDXRenderer>
-            </main>
-            <Footer/>
-        </MDXProvider>
+        <>
+            <MDXProvider components={shortcodes}>
+                <Header/>
+                <main>
+                    <Container>
+                        <div className={"post-page"}>
+                            {/*<img className={"post-header"} src={mdx.frontmatter.thumbnail} alt={mdx.frontmatter.title}/>*/}
+                            <div className={"parallax"} style={{backgroundImage: `url(${mdx.frontmatter.thumbnail})`}}/>
+                            <div className={"post-header"}>
+                                <h2>{mdx.frontmatter.title}</h2>
+                                <sub>by {mdx.frontmatter.author}</sub>
+                            </div>
+                            <MDXRenderer>
+                                {mdx.body}
+                            </MDXRenderer>
+                        </div>
+                    </Container>
+                </main>
+                <Footer/>
+            </MDXProvider>
+        </>
     );
 };
 
@@ -34,6 +46,8 @@ export const pageQuery = graphql`
             body
             frontmatter {
                 title
+                thumbnail
+                author
             }
         }
     }

@@ -1,5 +1,5 @@
 @import "palette";
-@import '~bootstrap/scss/functions', '~bootstrap/scss/variables';
+@import "~bootstrap/scss/functions", "~bootstrap/scss/variables";
 
 main {
   background-color: grey;
@@ -17,6 +17,20 @@ main {
 
     &:last-of-type {
       margin: 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-page {
+    .row {
+      .col-12 {
+        margin: 0 0 15px 0;
+
+        &:last-child {
+          margin: 0;
+        }
+      }
     }
   }
 }

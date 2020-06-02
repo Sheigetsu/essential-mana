@@ -1,34 +1,56 @@
 @import "palette";
+@import "~bootstrap/scss/functions", "~bootstrap/scss/variables";
 
-body {
-  background-color: $light-grey;
-  color: $secondary;
+main {
+  background-color: grey;
+
+  .container {
+    min-height: calc(100vh - 56px * 2);
+    background-color: lightgrey;
+    padding: 15px;
+  }
 }
 
 .main-page {
-  width: 100%;
-  display: inline-flex;
-  margin: 25px 15px;
+  .row {
+    margin: 0 0 15px 0;
 
-  .card-list {
-    display: flex;
-    width: 100%;
-    flex-wrap: wrap;
+    &:last-of-type {
+      margin: 0;
+    }
+  }
+}
 
-    //https://miro.medium.com/max/1200/1*mk1-6aYaf_Bes1E3Imhc0A.jpeg
+@media only screen and (max-width: 600px) {
+  .main-page {
+    .row {
+      .col-12 {
+        margin: 0 0 15px 0;
 
-    .card {
-      width: 25%;
-      margin: 0 15px 15px 0;
-      background-color: $background;
-      border-color: $background-secondary;
-
-      .card-img-top {
-        height: 250px;
-        object-fit: cover;
+        &:last-child {
+          margin: 0;
+        }
       }
     }
   }
 }
 
+.post-page {
+  .parallax {
+    height: 400px;
 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .post-header {
+    h2 {
+      margin: 0;
+    }
+    sub {
+      bottom: 0;
+    }
+  }
+}

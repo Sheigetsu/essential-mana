@@ -1,28 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link, useStaticQuery, graphql} from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import Container from "react-bootstrap/Container";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 const Header = () => {
     const data = useStaticQuery(graphql`
-    query {
-      allMdx {
-        edges {
-          node {
-            frontmatter {
-              tags
+        query {
+          allMdx {
+            edges {
+              node {
+                frontmatter {
+                  tags
+                  title
+                }
+              }
+            }
+          }
+          site {
+            siteMetadata {
               title
             }
           }
         }
-      }
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
+    `);
 
     const removeDupes = (data: string[]): string[] => {
         let result = [];
@@ -43,40 +45,34 @@ const Header = () => {
     );
 
     return (
-        <header className="main-header">
-            <Container>
-                <h1 className={"em-logo"}>
-                    <Link to={"/"}>{siteTitle.toUpperCase()}</Link>
-                </h1>
-                <nav className={"main-nav"}>
-                    <ul className={"nav-list"}>
-                        <li>
-                            <Link to={"/"}>Home</Link>
-                        </li>
-                        <li>
-                            <Link to={"/test"}>Gear</Link>
-                        </li>
-                        <li>
-                            <Link to={"/"}>Dungeons</Link>
-                        </li>
-                        <li>
-                            <Link to={"/"}>Patch Notes</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </Container>
+        <header>
+            <Navbar bg={"dark"} variant={"dark"} expand={"lg"}>
+                <Container>
+                    <Navbar.Brand href={"/"}>
+                        <img alt={""}
+                             src={"https://cdn.discordapp.com/attachments/346495559214956546/717068165858983946/d38ea5afc43027bc7cc46436fcab77e4_1.png"}
+                             width={"30"}
+                             height={"30"}
+                             className={"d-inline-block align-top"}/>{" "}
+                        {siteTitle}
+                    </Navbar.Brand>
+                    <Nav className={"em-nav"}>
+                        <Nav.Link href={"/"}>Home</Nav.Link>
+                    </Nav>
+                </Container>
+            </Navbar>
         </header>
     );
 };
 
 Header.propTypes = {
     siteTitle: PropTypes.string,
-    categories: PropTypes.array,
+    categories: PropTypes.array
 };
 
 Header.defaultProps = {
     siteTitle: ``,
-    categories: [],
+    categories: []
 };
 
 export default Header;

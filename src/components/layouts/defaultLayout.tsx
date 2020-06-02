@@ -9,13 +9,15 @@ import Container from "react-bootstrap/Container";
 
 const DefaultLayout = ({ children: content }) => {
     return (
-        <div className="page-wrap">
+        <>
             <Header/>
-            <Container>
-                <main className="site-main">{content}</main>
-            </Container>
+            <main>
+                <Container>
+                    {content}
+                </Container>
+            </main>
             <Footer/>
-        </div>
+        </>
     );
 };
 

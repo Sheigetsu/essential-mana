@@ -1,21 +1,7 @@
 @import "palette";
 
-.main-footer {
-  border-top: 1.5px solid $background-secondary;
-  overflow: hidden;
-  background-color: $background;
-  padding: 5px 10px;
-  font-size: .8em;
-
-  .container {
-    display: flex;
-    align-items: unset;
-    justify-content: space-around;
-    flex-wrap: wrap;
-
-    a {
-      color: $secondary;
-      font-weight: bolder;
-    }
+footer {
+  .navbar-brand {
+    font-size: 16px;
   }
 }

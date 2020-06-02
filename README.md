@@ -10,6 +10,11 @@ npm install
 gatsby develop
 ```
 
+### Mobile Development Server
+```
+gatsby develop -H <local ip> -p <port>
+```
+
 ### Build production server
 ```
 gatsby build

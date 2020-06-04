@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, fas } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "gatsby";
 
-const Search = ({ items = [], multiSelect = false }) => {
+const Search = ({ items = [] }) => {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const toggle = () => setOpen(!open);
 
   const filtered = items
     .filter(item => item.title.toUpperCase().includes(search.toUpperCase()))
-    .slice(0, 5);
+    .slice(0, 5); // hardcoded
 
   const onFilterChange = event => {
     setSearch(event.target.value);

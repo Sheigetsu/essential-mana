@@ -5,3 +5,5 @@ require("./src/styles/header.scss");
 require("./src/styles/footer.scss");
 
 require("./src/styles/postcard.scss");
+
+require("./src/styles/search.scss");

@@ -1,20 +1,28 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
+import Search from "./search";
+
 const Header = () => {
   const data = useStaticQuery(graphql`
     query {
-      allMdx {
+      allMdx(sort: { fields: frontmatter___date, order: ASC }) {
         edges {
           node {
             frontmatter {
               tags
               title
+              author
+              slug
+              date(formatString: "dddd MMMM Do, YYYY")
+              description
+              thumbnail
             }
+            id
           }
         }
       }
@@ -26,23 +34,27 @@ const Header = () => {
     }
   `);
 
-  const removeDupes = (data: string[]): string[] => {
-    let result = [];
+  // const removeDupes = (data: string[]): string[] => {
+  //   let result = [];
 
-    for (let tag of data) {
-      if (!result.includes(tag)) result.push(tag);
-    }
+  //   for (let tag of data) {
+  //     if (!result.includes(tag)) result.push(tag);
+  //   }
 
-    return result;
-  };
+  //   return result;
+  // };
 
   const siteTitle = data.site.siteMetadata.title;
-  const tags = removeDupes(
-    [].concat.apply(
-      [],
-      data.allMdx.edges.map(edge => edge.node.frontmatter.tags)
-    )
-  );
+  const posts = data.allMdx.edges.map(edge => {
+    return Object.assign(edge.node.frontmatter, { id: edge.node.id });
+  });
+
+  // const tags = removeDupes(
+  //   [].concat.apply(
+  //     [],
+  //     data.allMdx.edges.map(edge => edge.node.frontmatter.tags)
+  //   )
+  // );
 
   return (
     <header>
@@ -62,7 +74,7 @@ const Header = () => {
           </Navbar.Brand>
           <Nav className={"em-nav"}>
             <Nav.Link href={"/"}>Home</Nav.Link>
-            <Nav.Link href={"/searchTesting"}>Search</Nav.Link>
+            <Search items={posts} />
           </Nav>
         </Container>
       </Navbar>
